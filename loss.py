@@ -26,13 +26,17 @@ class YoloLoss(nn.Module):
 
         iou_maxes,bestbox = torch.max(ious,dim=0)
 
-        # in this paper this is the Iobj_i
+        # in the paper this is the Iobj_i
         exists_box = target[...,20].unsqueeze(3) #take the Pc from the prediction
 
         #=========================#
         #     BOX CORDINATES      #
         #=========================#
-
+        
+        # NOTE : in the paper an identity function is use
+        # which says the correct Bounding Box
+        # how it tells ? --> i = 0 to S and j = 0 to B
+        
         box_prediction = exists_box * (
         #this is for the second box (if second box has higher IOU the the max returns 1 else it retures 0 that why we used (1 - bestbox) bestbox would be zero if the first box has higher IOU
             (bestbox * predictions[...,26:30]) + (1 - bestbox) * predictions[...,21:25]
