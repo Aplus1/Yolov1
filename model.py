@@ -93,8 +93,4 @@ def T(S=7,B=2,C=20):
     x = torch.rand((2,3,448,448))
     print(model(x).shape)
 
-T()
-
-
-
-
+    
