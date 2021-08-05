@@ -36,7 +36,7 @@ class YoloLoss(nn.Module):
         # NOTE : in the paper an identity function is use
         # which says the correct Bounding Box
         # how it tells ? --> i = 0 to S and j = 0 to B 
-        # in this code j is denoted bestbox and i is denoted by idk( sorry :( )
+        # in this code j is denoted bestbox and i exists
         
         box_prediction = exists_box * (
         #this is for the second box (if second box has higher IOU the the max returns 1 else it retures 0 that why we used (1 - bestbox) bestbox would be zero if the first box has higher IOU
