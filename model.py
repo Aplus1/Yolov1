@@ -2,7 +2,7 @@ import torch
 from torch import nn
 from torch.nn.modules import padding 
 
-#NOTE : in this model the dropout is set to zero
+# NOTE : in this model the dropout is set to zero
 # in order to avoid the regularization effect in it
 # but there is a another reason for keeping it zero 
 # that is it take much time to train
