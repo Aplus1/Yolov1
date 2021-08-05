@@ -81,7 +81,7 @@ class Yolov1(nn.Module):
         S,B,C = split_size,num_boxes,num_classes
         return nn.Sequential(
             nn.Flatten(),
-            nn.Linear(1024 * S * S,496), # original os 4096
+            nn.Linear(1024 * S * S,496), # originally in the paper it is 4096 --> cutted down because of the train time
             nn.Dropout(0.0),
             nn.LeakyReLU(0.1),
             nn.Linear(496,S * S * (C + B * 5))
