@@ -47,7 +47,7 @@ def train_fn(train_loader,model,optimizer,loss_fn):
     loop = tqdm(train_loader,leave=True)
     mean_loss = []
 
-    for batch_idx,(x , y) in enumerate(loop):
+    for x, y in loop:
         x,y = x.to(device), y.to(device)
         out = model(x)
 
@@ -100,7 +100,7 @@ def main():
         drop_last=True
     )
 
-    for epoch in range(epochs):
+    for _ in range(epochs):
         pred_boxes,target_boxes = get_bboxes(
             train_loader,model,iou_threshold=0.5,threshold=0.4
         )
